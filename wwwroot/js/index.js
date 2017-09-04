@@ -1,6 +1,6 @@
 'use strict';
 
-var baseUrl = 'http://localhost:5000';
+var baseUrl = 'http://discover-soundcloud.golf1052.com';
 
 $('#discoverButton').on('click', function () {
     removeAlerts();
