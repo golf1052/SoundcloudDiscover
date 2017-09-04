@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Soundcloud Discover</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <h1>Soundcloud Discover</h1>
+    <h2>Discover new people on Soundcloud</h2>
+    <p>This finds people that the people you follow mutually follow</p>
+    <div id="alert-div">
+    </div>
+    <div class="form-group">
+      <label for="username">Enter your Soundcloud username (the one in the url)</label>
+      <input type="text" id="username" placeholder="Soundcloud username" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="min">Optionally enter the minimum number of mutual follows needed (defaults to 2)</label>
+      <input type="text" id="min" placeholder="2" class="form-control"/>
+    </div>
+    <button type="button" class="btn btn-primary btn-block" id="discoverButton">Discover!</button>
+    <br/>
+    <div class="alert alert-primary">
+      This can take a few minutes!
+    </div>
+    <br/>
+    <div class="progress invisible" id="progress-bar">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
