@@ -14,12 +14,12 @@ namespace SoundcloudDiscover.Controllers
     {
         private const string BaseUrl = "https://api.soundcloud.com";
         private HttpClient httpClient;
-        private Dictionary<int, JObject> userObjectCache;
+        private Dictionary<int, SoundcloudUser> userObjectCache;
 
         public SoundcloudController()
         {
             httpClient = new HttpClient();
-            userObjectCache = new Dictionary<int, JObject>();
+            userObjectCache = new Dictionary<int, SoundcloudUser>();
         }
 
         [HttpGet]
@@ -39,11 +39,11 @@ namespace SoundcloudDiscover.Controllers
                 if (discover.Value.Count >= minMutual && !followings.Contains(discover.Key))
                 {
                     JObject o = new JObject();
-                    o["url"] = userObjectCache[discover.Key]["permalink_url"];
+                    o["mutual"] = userObjectCache[discover.Key].ToJObject();
                     JArray followedByList = new JArray();
                     foreach (var followedBy in discover.Value)
                     {
-                        followedByList.Add(userObjectCache[followedBy]["permalink_url"]);
+                        followedByList.Add(userObjectCache[followedBy].ToJObject());
                     }
                     o["followed_by"] = followedByList;
                     discoveriesList.Add(o);
@@ -100,7 +100,7 @@ namespace SoundcloudDiscover.Controllers
                     followings.Add(followingsId);
                     if (!userObjectCache.ContainsKey(followingsId))
                     {
-                        userObjectCache.Add(followingsId, o);
+                        userObjectCache.Add(followingsId, SoundcloudUser.FromJObject(o));
                     }
                 }
                 responseObject = await GetContinuation(responseObject);
