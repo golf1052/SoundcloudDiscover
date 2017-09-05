@@ -59,9 +59,12 @@ function processData(data) {
     progressBar.addClass('bg-success')
         .removeClass('progress-bar-striped progress-bar-animated')
     setProgressBarValue(0);
-    var cardDiv = createAppend(contentDiv, 'div')
-        .addClass('card-columns');
+    var cardDiv = null;
     for (var i = 0; i < data.length; i++) {
+        if (i % 3 == 0) {
+            cardDiv = createAppend(contentDiv, 'div')
+                .addClass('card-deck');
+        }
         var mutual = data[i];
         var card = createElement('div')
             .addClass('card')
